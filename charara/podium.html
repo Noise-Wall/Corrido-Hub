@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>(WIP) Podium - Rank Your Characters</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="imgBar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Oswald:wght@200&display=swap" rel="stylesheet"> 
+  </head>
+  <body>
+
+    <!-- Header -->
+    <header class="headerbar"><h1>Podium - Rank Your Characters</h1></header>
+    
+    <div class="overlay"></div>
+
+    <!-- Main container -->
+    <div class="container">
+      
+      <!-- Row element -->
+      <div class="row" id="topRow">
+        
+        <input type="text" placeholder="Top Rank" class="rank"></input>
+        
+        
+        <!-- Character container -->
+        <div class="chara">
+          <p class="number"></p>
+          <div class="charaImg" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <input type="text" class="name" spellcheck="false" maxlength="20" placeholder="Enter a name..."></input>
+        </div>
+        
+        <div class="chara">
+          <p class="number"></p>
+          <div class="charaImg" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <input type="text" class="name" spellcheck="false" maxlength="20"  placeholder="Enter a name..."></input>
+          
+        </div>
+        
+        <div class="chara">
+          <p class="number"></p>
+          <div class="charaImg" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <input type="text" class="name" spellcheck="false" maxlength="20"  placeholder="Enter a name..."></input>
+        </div>
+        
+        <!-- Icons -->
+        
+        <div class="buttonBar">
+          <i class="fa-solid fa-square-plus"></i>
+          <i class="fa-solid fa-square-minus"></i>
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+        
+        
+      </div>
+    </div>
+    
+    <div style="height: 200px;"></div>
+    
+    <!-- Image Scrollbar-->
+    <div id="imageBar">
+      <div id="btnColumn">
+        <input type="file" name="imgUpload" id="imgUpload" accept="image/png, image/jpg, image/jpeg" accept="image/png, image/jpg, image/jpeg" multiple/>
+        <button id="callImgUpload" onclick="document.getElementById('imgUpload').click();" class="btnColumnItem" >
+          Upload
+        </button>
+        <button id="setImg" class="btnColumnItem">Save Podium</button>
+        <span>
+          <input type="checkbox" class="btnColumnItem" id="hideLabel"> Hide name labels
+        </span>
+        <span>
+          <input type="checkbox" class="btnColumnItem" id="hideNumber"> Hide rank numbers
+        </span>
+      </div>
+      <div id="imgScrollBar" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div style="width: 15px;"></div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="../html2canvas/dist/html2canvas.min.js"></script>
+  
+  </body>
+  </html>
+  
