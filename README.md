@@ -1,1 +1,0 @@
-Corrido Hub is my personal site. Here, I post all my projects and personal learning tests made in web environment.
