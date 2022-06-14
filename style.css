@@ -8,6 +8,7 @@ body {
 }
 
 .headerbar {
+  display: flex;
   background-color: #3A3335;
   color: #F2FDFF;
   text-shadow: 3px 2px #c03555;
@@ -20,6 +21,17 @@ body {
 
 .headerbar > h1 {
   margin-top: 10px;
+}
+
+.separator {
+  padding: 0 30px;
+  font-size: 3rem;
+  margin-top: -7px;
+}
+
+.navItem{
+  margin-top: 28px;
+  text-decoration: none;
 }
 
 .container {
