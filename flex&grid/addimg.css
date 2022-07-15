@@ -1,12 +1,22 @@
 .imgContainer {
     width: 90%;
-    display: flex;
     margin: auto;
     padding: 20px;
+}
+
+.flex {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
     gap: 5px;
+    justify-content: space-around;
+}
+
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
 }
 
 .uplImgContainer {

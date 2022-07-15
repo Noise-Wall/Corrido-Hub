@@ -11,6 +11,7 @@
     />
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="imgBar.css">
+    <link rel="stylesheet" href="overlay.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Oswald:wght@200&display=swap" rel="stylesheet"> 
@@ -25,7 +26,7 @@
       </div>
     </header>
     
-    <div class="overlay"></div>
+    <div id="overlay"></div>
 
     <!-- Main container -->
     <div class="container">
@@ -73,7 +74,7 @@
     
     <!-- Image Scrollbar-->
     <div id="imageBar">
-      <div id="btnColumn">
+      <div class="btnColumn">
         <input type="file" name="imgUpload" id="imgUpload" accept="image/png, image/jpg, image/jpeg" accept="image/png, image/jpg, image/jpeg" multiple/>
         <button id="callImgUpload" onclick="document.getElementById('imgUpload').click();" class="btnColumnItem" >
           Upload
@@ -86,12 +87,12 @@
           <input type="checkbox" class="btnColumnItem" id="hideNumber"> Hide rank numbers
         </span>
       </div>
-      <div id="imgScrollBar" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div id="imgScrollBar" ondrop="drop(event)" ondragover="allowDrop(event)" class="scrollInstructions"><p>Upload images or drag them from folder to start!</p></div>
       <div style="width: 15px;"></div>
     </div>
     
     <script src="script.js"></script>
-    <script src="../html2canvas/dist/html2canvas.min.js"></script>
+    <script src="../utils/html2canvas.min.js"></script>
   
   </body>
   </html>

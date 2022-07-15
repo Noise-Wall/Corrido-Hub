@@ -1,4 +1,5 @@
-var counter = 1;
+let counter = 1;
+let grid = false;
 
 function addImg() {
 
@@ -16,4 +17,19 @@ function addImg() {
 
     let container = document.querySelector('.imgContainer');
     container.appendChild(imgFrame);
+}
+
+function switchFlexGrid () {
+
+    container = document.querySelector(".imgContainer");
+
+    if (grid !== true) {
+        container.classList.remove("flex");
+        container.classList.add("grid");
+        grid = true;
+    } else {
+        container.classList.add("flex");
+        container.classList.remove("grid");
+        grid = false;
+    }
 }

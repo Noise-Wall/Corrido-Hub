@@ -1,0 +1,39 @@
+#overlayDiv {
+    position: fixed;
+    background-color: #F2FDFF;
+    top: 25px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 4;
+    padding: 10px;
+    width: 50%;
+    height: 80%;
+}
+
+#overlayInner {
+    overflow: scroll;
+    height: 90%;
+}
+
+#overlayInner > img {
+    width: 100%;
+}
+
+.overlayBtn {
+    background-color: #3a3335;
+    border-radius: 20px;
+    width: 90%;
+    min-width: 200px;
+    display: flex;
+    flex-direction: row;
+    margin: 10px 10px 5px 10px;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.overlayBtnItem {
+    margin: 5px 0;
+    cursor: pointer;
+    padding: 0 20px;
+}

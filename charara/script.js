@@ -171,6 +171,11 @@ function readFileAsImg(file) {
 }
 
 imgUpload.addEventListener("change", (event) => {
+  if (imgBar.classList.contains("scrollInstructions")){
+    imgBar.classList.remove("scrollInstructions");
+    imgBar.innerHTML="";
+  }
+  
   let files = event.currentTarget.files;
   let readers = [];
   
@@ -188,7 +193,9 @@ imgUpload.addEventListener("change", (event) => {
           newImg.id = "uplImg" + imgCounter;
           imgCounter++;
           newImg.src=values[img];
+          
           imgBar.appendChild(newImg);
+          
       }
   }).catch((err) => {
     console.error(err);
@@ -261,37 +268,78 @@ function createChara() {
 // html2canvas at work
 setImg.addEventListener("click", (event) => {
   moveRank = main.querySelectorAll(".rank");
+  hideButtons = main.querySelectorAll(".buttonBar");
   options = { allowTaint: false, windowWidth: 1100 }
 
-  adjust = new Promise(() => {
+  adjust = new Promise((resolve, reject) => {
     for (rank of moveRank){
       rank.style.left="-65px";
       rank.style.fontSize="1.6em";
       rank.style.fontWeight="800";
     }
-  }).then(html2canvas(main, options).then((canvas) => {
+    for (button of hideButtons) {
+      button.style.visibility = "hidden"
+    }
+    try {
+      resolve(enableOverlay());
+    } catch {
+      reject();
+    }
+  }).then(html2canvas(main, options).then(function(canvas) {
     
-    const overlay = document.querySelector(".overlay");
-    const img = document.createElement("img")
-    const resultDiv = document.createElement("div");
-    resultDiv.classList.add("resultDiv")
-    
-    overlay.style.display = "block";
-    overlay.appendChild(resultDiv);
-    resultDiv.appendChild(img);
-
-    /*
-    const a = document.createElement("a");
+    const img = document.createElement("img");
+    const a = document.getElementById("saveLink")
+    img.src = canvas.toDataURL("image/png");
+    img.alt = "Your podium image."
+    document.getElementById("overlayInner").appendChild(img);
     a.href = canvas.toDataURL("image/png");
-    a.target ="_blank";
-    a.click(); */
+    a.download = "podium";
+
   })).then(() => {
     for (rank of moveRank){
+      console.log("we did it reddit")
       rank.style.left="-78px";
       rank.style.fontSize="2rem";
       rank.style.fontWeight="normal";
+    } for (button of hideButtons) {
+      button.style.visibility = "visible"
     }
   }).catch((err) => {
     console.error(err);
   });
 });
+
+// separated from main html2canvas promise for resolution
+function enableOverlay() {
+  const overlay = document.getElementById("overlay");
+  overlay.style.visibility = "visible";
+  const displayResultImg = document.createElement("div");
+  displayResultImg.id = "overlayDiv";
+  const innerDiv = document.createElement("div");
+  innerDiv.id = "overlayInner"
+  displayResultImg.appendChild(innerDiv);
+
+  const btnSave = document.createElement("button");
+  const btnClose = document.createElement("button");
+  const btnDiv = document.createElement("div");   
+  const a = document.createElement("a");
+  a.id="saveLink";
+  btnSave.classList.add("overlayBtnItem");
+  btnSave.textContent = "Save";
+  a.appendChild(btnSave);
+  btnClose.classList.add("overlayBtnItem");
+  btnClose.textContent = "Close";
+  btnDiv.classList.add("overlayBtn");
+  btnDiv.style.position="absolute";
+  btnDiv.style.bottom="5px";
+  btnDiv.appendChild(a);
+  btnDiv.appendChild(btnClose);
+  displayResultImg.appendChild(btnDiv);
+
+  document.body.insertBefore(displayResultImg, document.body.firstElementChild.nextElementSibling.nextElementSibling);
+
+  btnClose.addEventListener("click", ()=>{
+    displayResultImg.remove();
+    overlay.style.visibility = "hidden"; 
+  })
+}

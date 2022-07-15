@@ -5,6 +5,7 @@ body {
   font-size: 1.15em;
   line-height: 1.2;
   overflow-x: hidden;
+  z-index: 1;
 }
 
 .headerbar {
@@ -36,16 +37,6 @@ body {
   margin-top: 28px;
 }
 
-#return {
-  color: #F2FDFF;
-  text-decoration: none;
-  text-shadow: 3px 2px #c03555;
-}
-
-#return:hover {
-  color: #FFc000;
-}
-
 .container {
   background-color: #3A3335;
   margin: auto;
@@ -58,6 +49,21 @@ body {
 
 .container > .container {
   background-color: #c03555;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.titular {
+  width: 45%;
+  font-size: 2.4rem;
+  font-weight: 900;
+  border-radius: 15px;
+  padding-left: 25px;
+}
+
+.titular:hover {
+  color: #8DD5DC;
+  text-shadow: 2px 2px 3px #F2FDFF;
 }
 
 .row {
@@ -159,7 +165,7 @@ body {
   height: 50px;
   margin: auto;
   position: absolute;
-  bottom: 5px;
+  bottom: 6px;
   right: 0px;
   text-align: center;
 }
@@ -203,32 +209,41 @@ body {
 a {
   color: #F2FDFF;
   text-shadow: 2px 2px #3A3335;
+  text-decoration: none;
 }
 
-.overlay {
+a:hover {
+  color: #FFc000;
+}
+
+a:active {
+  color: #8DD5DC;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+#overlay {
   /* First is for Firefox compatibility, second is for Chrome based browsers */
   filter: blur(10px);
   -webkit-filter: blur(10px);
   position: fixed;
-  display: none;
+  visibility: hidden;
+  background-color: rgba(0,0,0,0.6);
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 2;
+  z-index: 3;
 }
 
-.resultDiv {
-  width: 375px;
-  height: 375px;
-  margin: auto;
-  padding: 100% 0;
-  align-items: center;
-  justify-content: center;
-
-}
 /* Media queries */
 
 @media screen and (max-width: 768px){
